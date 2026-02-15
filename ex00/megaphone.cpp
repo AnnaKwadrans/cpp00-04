@@ -4,16 +4,8 @@
 
 void    print_arg(char *str)
 {
-    int     i;
-    char    c;
-
-    i = 0;
-    while (str[i])
-    {
-        c = str[i];
-        putchar(toupper(c));
-        i++;
-    }
+    for (int i = 0; str[i]; i++)
+        std::cout << static_cast<char>(std::toupper(static_cast<unsigned char>(str[i])));
 }
 
 int	main(int argc, char** argv)
