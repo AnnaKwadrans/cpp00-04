@@ -69,6 +69,18 @@ void    Phonebook::search(void) const
                 if (!isdigit(input[0]))
                         continue ;
                 id = stoi(input);
+                /* !!! niedostepne stoi; uzyc:
+                
+                #include <sstream>
+
+                int stringToInt(const std::string& str)
+                {
+                std::stringstream ss(str);
+                int value;
+                ss >> value;
+                return value;
+                }
+                */
         }
         std::cout << "First name: " << _contacts[id - 1].get_first_name() << std::endl
                 << "Last name: " << _contacts[id - 1].get_last_name() << std::endl
