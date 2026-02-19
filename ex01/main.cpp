@@ -2,7 +2,7 @@
 
 int     main(void)
 {
-        Phonebook       phonebook;
+        PhoneBook       phonebook;
         std::string     cmd;
 
         while (1)

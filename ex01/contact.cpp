@@ -3,6 +3,7 @@
 Contact::Contact(void)
 {
         std::cout << "Contact: Constructor called" << std::endl;
+        _empty = 1;
         return ;
 }
 
@@ -41,6 +42,12 @@ void    Contact::set_darkest_secret(std::string input)
         return ;
 }
 
+void    Contact::set_not_empty()
+{
+        _empty = 0;
+        return ;
+}
+
 std::string     Contact::get_first_name(void) const
 {
         return (_first_name);
@@ -64,4 +71,9 @@ std::string     Contact::get_phone_number(void) const
 std::string     Contact::get_darkest_secret(void) const
 {
         return (_darkest_secret);
+}
+
+int             Contact::is_empty(void) const
+{
+        return (_empty);
 }
