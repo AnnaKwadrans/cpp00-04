@@ -2,86 +2,86 @@
 
 PhoneBook::PhoneBook(void)
 {
-        std::cout << "Phonebook: Constructor called" << std::endl;
         _count = 0;
         return ;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-        std::cout << "Phonebook: Destructor called" << std::endl;
         return ;
 }
 
 void    PhoneBook::add(void)
 {
-        std::string     input;
         Contact         new_contact;
-        
-        std::cout << "ADD called" << std::endl;
-        
-        std::cout << "First name: ";
-        std::cin >> input;
-        new_contact.set_first_name(input);
-        std::cout << "Last name: ";
-        std::cin >> input;
-        new_contact.set_last_name(input);
-        std::cout << "Nickname: ";
-        std::cin >> input;
-        new_contact.set_nickname(input);
-        std::cout << "Phone number: ";
-        std::cin >> input;
-        new_contact.set_phone_number(input);
-        std::cout << "Darkest secret: ";
-        std::cin >> input;
-        new_contact.set_darkest_secret(input);
-        new_contact.set_not_empty();
 
+        input.clear();
+        while (input.empty())
+        {
+                std::cout << "First name: ";
+                getline(std::cin, input);
+                new_contact.set_first_name(input);
+        }
+        input.clear();
+        while (input.empty())
+        {
+                std::cout << "Last name: ";
+                getline(std::cin, input);
+                new_contact.set_last_name(input);
+        }
+        input.clear();
+        while (input.empty())
+        {
+                std::cout << "Nickname: ";
+                getline(std::cin, input);
+                new_contact.set_nickname(input);
+        }
+        input.clear();
+        while (input.empty())
+        {
+                std::cout << "Phone number: ";
+                getline(std::cin, input);
+                if (!valid_phone_nb(input))
+                {
+                        std::cout << "Invalid number" << std::endl;
+                        input.clear();
+                        continue ;
+                }
+                new_contact.set_phone_number(input);
+        }
+        input.clear();
+        while (input.empty())
+        {
+                std::cout << "Darkest secret: ";
+                getline(std::cin, input);
+                new_contact.set_darkest_secret(input);
+        }
+
+        new_contact.set_not_empty();
         _contacts[_count % 8] = new_contact;
         _count++;
         return ;
 }
 
-void    PhoneBook::search(void) const
+int    PhoneBook::valid_phone_nb(std::string nb) const
 {
-        std::string     input;
-        int             id;
-        
-        std::cout << "SEARCH called" << std::endl;
+        for (int i = 0; nb[i]; i++)
+        {
+                if (!std::isdigit(nb[i]))
+                        return (0);
+        }
+        return (1);
+}
 
+void    PhoneBook::search(void)
+{
         if (_count == 0)
         {
                 std::cout << "No saved contacts" << std::endl;
                 return ;
         }
-
         display_contacts();
-        id = 0;
-        while (id < 1 || id > 8)
-        {
-                std::cout << "Choose index (1-8): ";
-                getline(std::cin, input);
-                //std::cin >> input;
-                if (input.empty())
-                {
-                        std::cout << "Input can´t be empty" << std::endl;
-                        continue ;
-                }
-                if (input.length() != 1)
-                {
-                        std::cout << "Introduce one digit" << std::endl;
-                        continue ;
-                }
-                if (!isdigit(input[0]))
-                        continue ;
-                id = stoi(input);
-                if (id > 0 && id < 9 && _contacts[id - 1].is_empty())
-                {
-                        std::cout << "There is no contact with the chosen index" << std::endl;
-                        id = 0;
-                        continue ;
-                }
-        }
+        prompt_for_index();
         show_contact(id);       
         return ;
 }
@@ -112,26 +112,37 @@ void     PhoneBook::display_field(std::string field) const
         return ;
 }
 
-void    PhoneBook::show_contact(int id) const
+void    PhoneBook::prompt_for_index()
 {
-        std::cout << "First name: " << _contacts[id - 1].get_first_name() << std::endl
-                << "Last name: " << _contacts[id - 1].get_last_name() << std::endl
-                << "Nickname: " << _contacts[id - 1].get_nickname() << std::endl
-                << "Phone number: " << _contacts[id - 1].get_phone_number() << std::endl
-                << "Darkest secret: " << _contacts[id - 1].get_darkest_secret() << std::endl;
-        
+        std::stringstream       ss;
+
+        id = 0;
+        while (id < 1 || id > 8)
+        {
+                input.clear();
+                std::cout << "Choose index (1-8): ";
+                getline(std::cin, input);
+                if (input.empty() || input.length() != 1 || !isdigit(input[0]))
+                {
+                        std::cout << "Introduce one digit" << std::endl;
+                        continue ;
+                }
+                ss << input;
+                ss >> id;
+        }
+
 }
 
-
-                /* !!! niedostepne stoi; uzyc:
-                
-                #include <sstream>
-
-                int stringToInt(const std::string& str)
-                {
-                std::stringstream ss(str);
-                int value;
-                ss >> value;
-                return value;
-                }
-                */
+void    PhoneBook::show_contact(int id) const
+{
+        if (_contacts[id - 1].is_empty())
+                std::cout << "There is no contact with the chosen index" << std::endl;
+        else
+        {
+                std::cout << "First name: " << _contacts[id - 1].get_first_name() << std::endl
+                        << "Last name: " << _contacts[id - 1].get_last_name() << std::endl
+                        << "Nickname: " << _contacts[id - 1].get_nickname() << std::endl
+                        << "Phone number: " << _contacts[id - 1].get_phone_number() << std::endl
+                        << "Darkest secret: " << _contacts[id - 1].get_darkest_secret() << std::endl;
+        }       
+}

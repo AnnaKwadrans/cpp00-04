@@ -2,14 +2,12 @@
 
 Contact::Contact(void)
 {
-        std::cout << "Contact: Constructor called" << std::endl;
         _empty = 1;
         return ;
 }
 
 Contact::~Contact(void)
 {
-        std::cout << "Contact: Destructor called" << std::endl;
         return ;
 }
 
@@ -77,3 +75,4 @@ int             Contact::is_empty(void) const
 {
         return (_empty);
 }
+

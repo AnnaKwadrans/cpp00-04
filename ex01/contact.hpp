@@ -20,7 +20,6 @@ class Contact
         Contact(void);
         ~Contact(void);
 
-        //setters
         void    set_first_name(std::string input);
         void    set_last_name(std::string input);
         void    set_nickname(std::string input);
@@ -28,7 +27,6 @@ class Contact
         void    set_darkest_secret(std::string input);
         void    set_not_empty();
 
-        //getters
         std::string     get_first_name(void) const;
         std::string     get_last_name(void) const;
         std::string     get_nickname(void) const;
