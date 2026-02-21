@@ -3,6 +3,7 @@
 
 # include <iomanip>
 # include <sstream>
+# include <cstdlib>
 # include "contact.hpp"
 
 class PhoneBook
@@ -16,7 +17,8 @@ class PhoneBook
         void    display_field(std::string field) const;
         void    prompt_for_index();
         void    show_contact(int id) const;
-        int    valid_phone_nb(std::string nb) const;
+        int     valid_phone_nb(std::string nb) const;
+        void    get_input(std::string prompt);
 
         public:
 

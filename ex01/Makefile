@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = phonebook
 RM = rm -f
 
-SRC = main.cpp phonebook.cpp contact.cpp
+SRC = main.cpp phonebook.cpp phonebook_search.cpp contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
