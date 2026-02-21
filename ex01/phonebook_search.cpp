@@ -2,13 +2,15 @@
 
 void    PhoneBook::search(void)
 {
+        int     id;
+        
         if (_count == 0)
         {
                 std::cout << "No saved contacts" << std::endl;
                 return ;
         }
         display_contacts();
-        prompt_for_index();
+        id = prompt_for_index();
         show_contact(id);       
         return ;
 }
@@ -50,9 +52,11 @@ void     PhoneBook::display_field(std::string field, int end_with_bar) const
         return ;
 }
 
-void    PhoneBook::prompt_for_index()
+int     PhoneBook::prompt_for_index() const
 {
         //std::stringstream       ss;
+        std::string     input;
+        int             id;
 
         id = 0;
         while (id < 1 || id > 8)
@@ -78,6 +82,7 @@ void    PhoneBook::prompt_for_index()
                 std::stringstream ss(input);
                 ss >> id;
         }
+        return (id);
 }
 
 void    PhoneBook::show_contact(int id) const

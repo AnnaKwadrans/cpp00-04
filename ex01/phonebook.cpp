@@ -14,22 +14,23 @@ PhoneBook::~PhoneBook(void)
 void    PhoneBook::add(void)
 {
         Contact         new_contact;
+        std::string     input;
 
-        get_input("First name: ");
+        input = get_input("First name: ");
         new_contact.set_first_name(input);
 
-        get_input("Last name: ");
+        input = get_input("Last name: ");
         new_contact.set_last_name(input);
 
-        get_input("Nickname: ");
+        input = get_input("Nickname: ");
         new_contact.set_nickname(input);
-        
+
         input.clear();
         while (!valid_phone_nb(input))
-                get_input("Phone number: ");
+                input = get_input("Phone number: ");
         new_contact.set_phone_number(input);
 
-        get_input("Darkest secret: ");
+        input = get_input("Darkest secret: ");
         new_contact.set_darkest_secret(input);
 
         new_contact.set_not_empty();
@@ -53,9 +54,10 @@ int    PhoneBook::valid_phone_nb(std::string nb) const
         return (1);
 }
 
-void    PhoneBook::get_input(std::string prompt)
+std::string    PhoneBook::get_input(std::string prompt)
 {
-        input.clear();
+        std::string     input;
+
         while (input.empty())
         {
                 std::cout << prompt;
@@ -65,4 +67,5 @@ void    PhoneBook::get_input(std::string prompt)
                         exit(1);
                 }
         }
+        return (input);
 }
