@@ -15,33 +15,44 @@ void    PhoneBook::search(void)
 
 void    PhoneBook::display_contacts(void) const
 {
-        std::cout << "     Index|First name| Last name|  Nickname" << std::endl;
-        std::cout << "----------|----------|----------|----------" << std::endl;
+        std::cout << "     Index|First name| Last name|  Nickname" << std::endl
+        << "----------|----------|----------|----------" << std::endl;
 
+        //display_field("Index", 1);
+        //display_field("First name", 1);
+        //display_field("Last name", 1);
+        //display_field("Nickname", 0);
         for (int i = 0; ((i < 8) && !(_contacts[i].is_empty())); i++)
         {
-                std::cout << "         " << (i + 1) << "|";
-                display_field(_contacts[i].get_first_name());
-                std::cout << "|"; 
-                display_field(_contacts[i].get_last_name());
-                std::cout << "|";
-                display_field(_contacts[i].get_nickname());
-                std::cout << std::endl;
+                //std::cout << "         " << (i + 1) << "|";
+                std::stringstream ss;
+                ss << i + 1;
+                display_field(ss.str(), 1);
+                display_field(_contacts[i].get_first_name(), 1);
+                //std::cout << "|"; 
+                display_field(_contacts[i].get_last_name(), 1);
+                //std::cout << "|";
+                display_field(_contacts[i].get_nickname(), 0);
+                //std::cout << std::endl;
         }
 }
 
-void     PhoneBook::display_field(std::string field) const
+void     PhoneBook::display_field(std::string field, int end_with_bar) const
 {
         if (field.length() > 10)
                 field = field.substr(0, 8) + ".";
         std::cout << std::setfill(' ') << std::setw(10);
         std::cout << field;
+        if (end_with_bar)
+                std::cout << "|";
+        else
+                std::cout << std::endl;
         return ;
 }
 
 void    PhoneBook::prompt_for_index()
 {
-        std::stringstream       ss;
+        //std::stringstream       ss;
 
         id = 0;
         while (id < 1 || id > 8)
@@ -58,9 +69,14 @@ void    PhoneBook::prompt_for_index()
                         std::cout << "Introduce one digit" << std::endl;
                         continue ;
                 }
-                ss << input;
+                //ss << input;
+                //ss >> id;
+                //ss.clear();
+                
+                //id = input[0];
+                
+                std::stringstream ss(input);
                 ss >> id;
-                ss.clear();
         }
 }
 
