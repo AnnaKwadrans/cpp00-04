@@ -44,7 +44,7 @@ int    PhoneBook::valid_phone_nb(std::string nb) const
                 return (0);
         for (int i = 0; nb[i]; i++)
         {
-                if (!std::isdigit(nb[i]))
+                if (!std::isdigit(static_cast<unsigned char>(nb[i])))
                 {
                         std::cout << "Invalid number" << std::endl;
                         return (0);

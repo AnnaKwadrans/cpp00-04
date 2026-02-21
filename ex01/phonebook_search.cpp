@@ -64,7 +64,7 @@ void    PhoneBook::prompt_for_index()
                         std::cout << std::endl << "Error while getting input" << std::endl;
                         exit(1);
                 }
-                if (input.empty() || input.length() != 1 || !isdigit(input[0]))
+                if (input.empty() || input.length() != 1 || !isdigit(static_cast<unsigned char>(input[0])))
                 {
                         std::cout << "Introduce one digit" << std::endl;
                         continue ;
@@ -74,7 +74,7 @@ void    PhoneBook::prompt_for_index()
                 //ss.clear();
                 
                 //id = input[0];
-                
+
                 std::stringstream ss(input);
                 ss >> id;
         }
