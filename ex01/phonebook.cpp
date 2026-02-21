@@ -39,7 +39,7 @@ void    PhoneBook::add(void)
         return ;
 }
 
-int    PhoneBook::valid_phone_nb(std::string nb) const
+int    PhoneBook::valid_phone_nb(std::string nb)
 {
         if (nb.empty())
                 return (0);
@@ -54,7 +54,7 @@ int    PhoneBook::valid_phone_nb(std::string nb) const
         return (1);
 }
 
-std::string    PhoneBook::get_input(std::string prompt) const
+std::string    PhoneBook::get_input(std::string prompt)
 {
         std::string     input;
 

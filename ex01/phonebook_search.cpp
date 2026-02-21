@@ -39,7 +39,7 @@ void    PhoneBook::display_contacts(void) const
         }
 }
 
-void     PhoneBook::display_field(std::string field, int end_with_bar) const
+void     PhoneBook::display_field(std::string field, int end_with_bar)
 {
         if (field.length() > 10)
                 field = field.substr(0, 8) + ".";
@@ -52,7 +52,7 @@ void     PhoneBook::display_field(std::string field, int end_with_bar) const
         return ;
 }
 
-int     PhoneBook::prompt_for_index() const
+int     PhoneBook::prompt_for_index()
 {
         //std::stringstream       ss;
         std::string     input;

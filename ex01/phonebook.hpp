@@ -13,12 +13,13 @@ class PhoneBook
         Contact         _contacts[8];
         int             _count;
 
-        void            display_contacts(void) const;
-        void            display_field(std::string field, int end_with_bar) const;
-        int             prompt_for_index() const;
-        void            show_contact(int id) const;
-        int             valid_phone_nb(std::string nb) const;
-        std::string     get_input(std::string prompt) const;
+        static std::string     get_input(std::string prompt);
+        static int             valid_phone_nb(std::string nb);
+
+        void                   display_contacts(void) const;
+        static void            display_field(std::string field, int end_with_bar);
+        static int             prompt_for_index();
+        void                   show_contact(int id) const;
 
         public:
 
