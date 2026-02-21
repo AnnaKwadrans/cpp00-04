@@ -1,6 +1,6 @@
 #include "phonebook.hpp"
 
-void    PhoneBook::search(void)
+void    PhoneBook::search(void) const
 {
         int     id;
         

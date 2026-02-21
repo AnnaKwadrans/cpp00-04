@@ -18,7 +18,7 @@ class PhoneBook
         int             prompt_for_index() const;
         void            show_contact(int id) const;
         int             valid_phone_nb(std::string nb) const;
-        std::string     get_input(std::string prompt);
+        std::string     get_input(std::string prompt) const;
 
         public:
 
@@ -29,7 +29,7 @@ class PhoneBook
         ~PhoneBook(void);
 
         void            add(void);
-        void            search(void);
+        void            search(void) const;
 };
 
 #endif
