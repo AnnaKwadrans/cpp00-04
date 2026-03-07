@@ -6,13 +6,13 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 16:40:35 by akwadran          #+#    #+#             */
-/*   Updated: 2026/03/07 18:10:33 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/03/07 20:30:37 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
     std::cout << "HumanB: constructor called" << std::endl;
     // does not take weapon
@@ -30,5 +30,5 @@ void    HumanB::attack() const
 
 void    HumanB::setWeapon(Weapon& weapon)
 {
-    *this->_weapon = weapon;
+    this->_weapon = &weapon;
 }

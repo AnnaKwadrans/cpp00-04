@@ -6,7 +6,7 @@
 /*   By: akwadran <akwadran@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 16:45:12 by akwadran          #+#    #+#             */
-/*   Updated: 2026/03/07 18:00:20 by akwadran         ###   ########.fr       */
+/*   Updated: 2026/03/07 20:31:26 by akwadran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 
 public:
 
-    Weapon(void);  // es necesario?
+    //Weapon(void);  // es necesario?
     Weapon(std::string type);
     ~Weapon();
 
