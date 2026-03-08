@@ -4,6 +4,15 @@
 # include <string>
 # include <iostream>
 
+enum    Level
+{
+        DEBUG,
+        INFO,
+        WARNING,
+        ERROR,
+        INVALID
+};
+
 class Harl
 {
         private:
@@ -17,17 +26,9 @@ class Harl
                 Harl(/* args */);
                 ~Harl();
 
-                void    complain( std::string level );
+                void            complain( std::string level );
+                static Level    get_lvl(std::string level);
         
-};
-
-enum    Level
-{
-        DEBUG,
-        INFO,
-        WARNING,
-        ERROR,
-        INVALID
 };
 
 #endif

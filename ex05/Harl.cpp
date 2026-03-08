@@ -32,20 +32,6 @@ void    Harl::_error( void )
         return ;
 }
 
-Level   get_lvl(std::string level)
-{
-        if (level == "DEBUG")
-                return (DEBUG);
-        else if (level == "INFO")
-                return (INFO);
-        else if (level == "WARNING")
-                return (WARNING);
-        else if (level == "ERROR")
-                return (ERROR);
-        else
-                return (INVALID);
-}
-
 void    Harl::complain( std::string level )
 {
         void    (Harl::*fptr)(void);
@@ -71,4 +57,18 @@ void    Harl::complain( std::string level )
         }
         (this->*fptr)();
         return ;
+}
+
+Level   Harl::get_lvl(std::string level)
+{
+        if (level == "DEBUG")
+                return (DEBUG);
+        else if (level == "INFO")
+                return (INFO);
+        else if (level == "WARNING")
+                return (WARNING);
+        else if (level == "ERROR")
+                return (ERROR);
+        else
+                return (INVALID);
 }
