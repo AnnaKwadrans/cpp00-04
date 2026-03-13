@@ -1,0 +1,28 @@
+110101 (2)
+
+1*2⁵ + 1*2⁴ + 0*2³ + 1*2² + 0*2¹ + 1*2⁰
+
+32 + 16 + 0 + 4 + 0 + 1
+
+53 (10)
+
+26.5 = 2*10¹ + 6*10⁰ + 5*10-¹
+
+BINARY POINT
+
+53.0:
+
+|2⁵|2⁴|2³|2²|2¹|2⁰|B.P.|2-¹|2-²|2-³|
+------------------------------------
+|1 |1 |0 |1 |0 |1 | .  | 0 | 0 | 0 |
+
+26.5:
+
+|2⁵|2⁴|2³|2²|2¹|2⁰|B.P.|2-¹|2-²|2-³|
+------------------------------------
+|0 |1 |1 |0 |1 |0 | .  | 1 | 0 | 0 |
+
+shifting an integer to the right by 1 bit position is equivalent to dividing
+the number by 2
+
+https://web.archive.org/web/20231224143018/https://inst.eecs.berkeley.edu/~cs61c/sp06/handout/fixedpt.html
