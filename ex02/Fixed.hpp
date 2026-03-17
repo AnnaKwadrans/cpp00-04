@@ -46,8 +46,11 @@ class Fixed
         //      pre-decrement and post-decrement) operators, which will
         //      increase or decrease the fixed-point value by the smallest
         //      representable ϵ, such that 1 + ϵ > 1.
+        void    operator++(void);
+        void    operator--(void);
+        void    operator++(void);
+        void    operator++(void);
 
-        
         // FOUR PUBLIC OVERLOADED MEMBER FUNCTIONS
         // A static member function min that takes two references to
         //      fixed-point numbers as parameters, and returns a reference
