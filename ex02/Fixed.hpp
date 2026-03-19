@@ -29,7 +29,7 @@ class Fixed
 
         //  OPERATORS OVERLOADING
         // The 6 comparison operators: >, <, >=, <=, ==, and !=.
-        bool    operator>(const Fixed &fp)s;
+        bool    operator>(const Fixed &fp);
         bool    operator<(const Fixed &fp);
         bool    operator>=(const Fixed &fp);
         bool    operator<=(const Fixed &fp);
@@ -37,19 +37,19 @@ class Fixed
         bool    operator!=(const Fixed &fp);
         
         // The 4 arithmetic operators: +, -, *, and /.
-        float   operator+(const Fixed &fp) const;
-        float   operator-(const Fixed &fp) const;
-        float   operator*(const Fixed &fp) const;
-        float   operator/(const Fixed &fp) const;
+        Fixed   operator+(const Fixed &fp) const;
+        Fixed   operator-(const Fixed &fp) const;
+        Fixed   operator*(const Fixed &fp) const;
+        Fixed   operator/(const Fixed &fp) const;
 
         // The 4 increment/decrement (pre-increment and post-increment, 
         //      pre-decrement and post-decrement) operators, which will
         //      increase or decrease the fixed-point value by the smallest
         //      representable ϵ, such that 1 + ϵ > 1.
-        void    operator++(void);
-        void    operator--(void);
-        void    operator++(void);
-        void    operator++(void);
+        Fixed&    operator++(void);
+        Fixed     operator++(int);
+        Fixed&    operator--(void);
+        Fixed     operator--(int);
 
         // FOUR PUBLIC OVERLOADED MEMBER FUNCTIONS
         // A static member function min that takes two references to
@@ -60,7 +60,7 @@ class Fixed
         // A static member function min that takes two references to constant
         //      fixed-point numbers as parameters, and returns a reference to
         //      the smallest one.
-        static Fixed    &min(Fixed & const fp1, Fixed & const fp2);
+        static const Fixed    &min(Fixed const & fp1, Fixed const & fp2);
 
         // A static member function max that takes two references to
         //      fixed-point numbers as parameters, and returns a reference to
@@ -70,7 +70,7 @@ class Fixed
         // A static member function max that takes two references to constant
         //      fixed-point numbers as parameters, and returns a reference to
         //      the greatest one.
-        static Fixed    &max(Fixed & const fp1, Fixed & const fp2);
+        static const Fixed    &max(Fixed const & fp1, Fixed const & fp2);
 };
 
 std::ostream    &operator<<(std::ostream &ostream, Fixed const &fixed);

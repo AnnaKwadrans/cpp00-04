@@ -31,15 +31,13 @@ Fixed::~Fixed(void)
 
 int     Fixed::getRawBits(void) const
 {
-    std::cout << "GetRawBits member function called" << std::endl;
-    
+    //std::cout << "GetRawBits member function called" << std::endl;
     return (this->_num);
 }
 
 void    Fixed::setRawBits(int const raw)
 {
-    std::cout << "SetRawBits member function called" << std::endl;
-    
+    //std::cout << "SetRawBits member function called" << std::endl;
     this->_num = raw;
     return ;
 }
@@ -105,22 +103,88 @@ bool    Fixed::operator!=(const Fixed &fp)
         return (this->getRawBits() != fp.getRawBits());
 }
 
-float   Fixed::operator+(const Fixed &fp) const
+Fixed   Fixed::operator+(const Fixed &fp) const
 {
-    return (this->toFloat() + fp.toFloat());
+    Fixed res;
+    res.setRawBits(this->getRawBits() + fp.getRawBits());
+    return (res);
 }
 
-float   Fixed::operator-(const Fixed &fp) const
+Fixed   Fixed::operator-(const Fixed &fp) const
 {
-    return (this->toFloat() - fp.toFloat());
+    Fixed res;
+    res.setRawBits(this->getRawBits() - fp.getRawBits());
+    return (res);
 }
 
-float   Fixed::operator*(const Fixed &fp) const
+Fixed   Fixed::operator*(const Fixed &fp) const
 {
-    return (this->toFloat() * fp.toFloat());
+    Fixed res;
+    res.setRawBits((this->getRawBits() * fp.getRawBits()) >> _fbits);
+    return (res);
 }
 
-float   Fixed::operator/(const Fixed &fp) const
+Fixed   Fixed::operator/(const Fixed &fp) const
 {
-    return (this->toFloat() / fp.toFloat());
+    Fixed res;
+    res.setRawBits((this->getRawBits() << _fbits) / fp.getRawBits());
+    return (res);
+}
+
+Fixed&    Fixed::operator++(void)
+{
+    this->_num = this->_num + (1 << _fbits);
+    return (*this);
+}
+
+Fixed    Fixed::operator++(int)
+{
+    Fixed   prev(*this);
+    this->_num = this->_num + (1 << _fbits);
+    return (prev);
+}
+
+Fixed&    Fixed::operator--(void)
+{
+    this->_num -= (1 << _fbits);
+    return (*this);
+}
+
+Fixed    Fixed::operator--(int)
+{
+    Fixed prev(*this);
+    this->_num -= (1 << _fbits);
+    return (prev);
+}
+
+Fixed    &Fixed::min(Fixed &fp1, Fixed &fp2)
+{
+    if (fp1.getRawBits() <= fp2.getRawBits())
+        return (fp1);
+    else
+        return (fp2);
+}
+
+Fixed const    &Fixed::min(Fixed const & fp1, Fixed const & fp2)
+{
+    if (fp1.getRawBits() <= fp2.getRawBits())
+        return (fp1);
+    else
+        return (fp2);
+}
+
+Fixed    &Fixed::max(Fixed &fp1, Fixed &fp2)
+{
+    if (fp1.getRawBits() >= fp2.getRawBits())
+        return (fp1);
+    else
+        return (fp2);
+}
+
+Fixed const    &Fixed::max(Fixed const & fp1, Fixed const & fp2)
+{
+    if (fp1.getRawBits() >= fp2.getRawBits())
+        return (fp1);
+    else
+        return (fp2);
 }
