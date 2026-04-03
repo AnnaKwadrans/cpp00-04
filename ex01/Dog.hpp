@@ -20,4 +20,6 @@ class Dog : public Animal
                 Brain &         getBrain(void) const;
 };
 
+std::ostream&   operator<<(std::ostream& os, Dog const & src);
+
 #endif

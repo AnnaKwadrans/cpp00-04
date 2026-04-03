@@ -35,7 +35,15 @@ Brain &         Cat::getBrain(void) const {
         return (*this->_brain);
 }
 
-/*
-void            setBrain(Brain & brain) {
-        setAllIdeas(brain);
-}*/
+std::ostream&   operator<<(std::ostream& os, Cat const & src) {
+        os << src.getType() << std::endl;
+        Brain&  srcBrain = src.getBrain();
+        for (int i = 0; i < N_IDEAS; i++)
+        {
+                os << srcBrain.getIdea(i);
+                if (i != N_IDEAS - 1)
+                        os << " | ";
+        }
+        os << std::endl << std::endl;;
+        return (os);
+}

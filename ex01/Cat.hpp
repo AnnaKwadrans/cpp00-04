@@ -18,6 +18,9 @@ class Cat : public Animal
                 Brain &         getBrain(void) const;
                 //void            setBrain(Brain & brain);
 
+
 };
+
+std::ostream&   operator<<(std::ostream& os, Cat const & src);
 
 #endif
