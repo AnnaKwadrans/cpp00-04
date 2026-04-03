@@ -4,6 +4,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 
 class Brain
 {
@@ -22,6 +23,7 @@ class Brain
 
 };
 
-
+void    setAllIdeas(Brain & brain, std::string idea);
+void    printAllIdeas(Brain const & brain);
 
 #endif

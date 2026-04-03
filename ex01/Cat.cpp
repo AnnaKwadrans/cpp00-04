@@ -18,8 +18,9 @@ Cat&    Cat::operator=(Cat const & src) {
         std::cout << "Cat: Assign operator called" << std::endl;
         if (this != &src)
         {
+                std::cout << "copying a cat..." << std::endl;
                 Animal::operator=(src);
-                this->_brain = src._brain;
+                *this->_brain = *src._brain;
                 //for (int i = 0; i < 100; i++)
                 //        this->_brain[i] = src._brain[i];
         }  
@@ -29,3 +30,12 @@ Cat&    Cat::operator=(Cat const & src) {
 void    Cat::makeSound(void) const {
         std::cout << "Meow!" << std::endl;
 }
+
+Brain &         Cat::getBrain(void) const {
+        return (*this->_brain);
+}
+
+/*
+void            setBrain(Brain & brain) {
+        setAllIdeas(brain);
+}*/

@@ -2,6 +2,7 @@
 
 Brain::Brain(void) {
     std::cout << "Brain: default constructor called" << std::endl;
+    setAllIdeas(*this, "empty");
 }
 
 Brain::Brain(Brain const & cpy) {
@@ -35,4 +36,24 @@ void        Brain::setIdea(int i, std::string const & idea) {
     if (i < 0 || i >= N_IDEAS)
         std::cout << "Idea's index out of scope" << std::endl;
     this->_ideas[i] = idea;
+}
+
+void    setAllIdeas(Brain & brain, std::string idea) {
+    for (int i = 0; i < N_IDEAS; i++)
+    {
+        std::stringstream ss;
+        ss << i + 1;
+        std::string newIdea = idea + " " + ss.str();
+        brain.setIdea(i, newIdea);
+    }
+}
+
+void    printAllIdeas(Brain const & brain) {
+    for (int i = 0; i < N_IDEAS; i++)
+    {
+        std::cout << brain.getIdea(i);
+        if (i != N_IDEAS - 1)
+            std::cout << " | ";
+    }
+    std::cout << std::endl << std::endl;;
 }
