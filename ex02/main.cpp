@@ -27,6 +27,8 @@ for (int i = 0; i < SIZE; i++)
 for (int i = 0; i < SIZE; i++)
         delete animals[i];
 
+//const Animal* a = new Animal;
+
 std::cout << std::endl << "*** COPY CONSTRUCTORS ***" << std::endl << std::endl;
 
 const Cat*      cat1 = new Cat;

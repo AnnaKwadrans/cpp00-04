@@ -18,6 +18,7 @@ class Dog : public Animal
                 Dog &        operator=(Dog const & src);
                 void    makeSound(void) const;
                 Brain &         getBrain(void) const;
+                void    printAllIdeas(Brain const & brain);
 };
 
 std::ostream&   operator<<(std::ostream& os, Dog const & src);

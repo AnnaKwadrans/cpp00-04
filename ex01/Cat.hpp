@@ -17,6 +17,7 @@ class Cat : public Animal
                 void    makeSound(void) const;
                 Brain &         getBrain(void) const;
                 //void            setBrain(Brain & brain);
+                void    printAllIdeas(Brain const & brain);
 
 
 };
